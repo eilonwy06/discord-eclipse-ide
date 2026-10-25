@@ -43,8 +43,8 @@ public class PresencePreferencePage extends FieldEditorPreferencePage implements
         addField(new BooleanFieldEditor(PresencePreferences.ENABLED, "&Enable Rich Presence", p));
         addField(new StringFieldEditor(PresencePreferences.APPLICATION_ID, "&Application ID:", p));
         Link portal = new Link(p, SWT.WRAP);
-        portal.setText("Create an application at <a>" + PORTAL + "</a>; its name is what Discord shows "
-                + "(\"Playing Eclipse\"). Copy the Application ID from its General Information page.");
+        portal.setText("The default shows you as \"Playing Eclipse IDE\". To show a different name or art, "
+                + "create your own application at <a>" + PORTAL + "</a> and paste its Application ID here.");
         portal.setLayoutData(span(p));
         portal.addListener(SWT.Selection, e -> DiscordView.openExternal(PORTAL));
 

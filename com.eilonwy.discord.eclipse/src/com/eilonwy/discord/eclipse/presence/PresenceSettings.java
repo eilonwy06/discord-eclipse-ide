@@ -46,10 +46,18 @@ public record PresenceSettings(
     public static final String DEFAULT_ICON_BASE_URL =
             "https://raw.githubusercontent.com/eilonwy06/discord-eclipse-ide/6d5fb18969e1dba1e64f86d7fb758896aed1f1b3/assets/icons/";
 
+    /**
+     * The project's own Discord application, named "Eclipse IDE", with the Eclipse logo uploaded
+     * as its {@code eclipse} art asset. Shipping it means Rich Presence works with no setup, the
+     * way discord-vscode ships its own. An Application ID is a public identifier, not a secret.
+     * Users can still enter their own in the preferences.
+     */
+    public static final String DEFAULT_APPLICATION_ID = "1563766492154175499";
+
     public static PresenceSettings defaults() {
         return new PresenceSettings(
                 true,
-                "",
+                DEFAULT_APPLICATION_ID,
                 "Idling",
                 "Editing {file_name}",
                 "Debugging {file_name}",
