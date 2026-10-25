@@ -10,6 +10,7 @@
       <view
             category="com.eilonwy.discord.eclipse.category"
             class="com.eilonwy.discord.eclipse.ui.DiscordView"
+            icon="icons/discord16.png"
             id="com.eilonwy.discord.eclipse.views.discord"
             name="Discord"
             restorable="true">

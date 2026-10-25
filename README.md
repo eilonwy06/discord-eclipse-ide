@@ -12,7 +12,9 @@ an Eclipse view.
 > of course, upstream.
 
 *Not affiliated with or endorsed by Discord, the Eclipse Foundation, or the discord-vscode
-authors.*
+authors. Discord and the Discord logo are trademarks of Discord Inc.; Eclipse and the Eclipse logo
+are trademarks of the Eclipse Foundation. They are used here only to identify the products this
+plug-in works with.*
 
 ## What it does
 
@@ -116,7 +118,11 @@ both open, whichever connected first is shown. Set an idle timeout in both
   window and a harmless Shift press is posted, through SWT's internal bindings in pure Java. This
   works around WebView2 intermittently refusing keys inside workbench views.
 - Discord stays in the view. Other top-level navigation and popups open in the system browser.
-  Iframes are left alone, because the sign-in captcha is one.
+  Iframes are left alone, because the sign-in captcha is one. The view has no navigation buttons;
+  *Open in System Browser* is in its view menu.
+- Offline: before loading, the view checks that Discord can be reached. If it can't, it shows a
+  self-contained "No internet connection" page with a *Try again* button, and retries on its own
+  every 10 s until Discord loads. Once Discord is open, its own client handles dropped connections.
 - Nothing is injected into Discord's page and the account is never automated. Discord's terms
   forbid automating a user account.
 - There is no Internet Explorer fallback; without WebView2 the view says so instead.
