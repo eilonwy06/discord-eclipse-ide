@@ -3,7 +3,7 @@
 Show what you are working on in Eclipse on your Discord profile, and keep Discord itself open in
 an Eclipse view.
 
-> **Credit where it's due.** This project is a fork of
+> This project is a fork of
 > [discord-vscode](https://github.com/iCrawl/discord-vscode) by Noel Buechler (iCrawl) and
 > contributors, the Discord Rich Presence extension for Visual Studio Code. The idea, the
 > activity templates and their `{tokens}`, the setting names and the language-icon table all
