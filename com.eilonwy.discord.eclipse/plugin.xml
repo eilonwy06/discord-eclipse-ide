@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension point="org.eclipse.ui.views">
+      <category
+            id="com.eilonwy.discord.eclipse.category"
+            name="Discord">
+      </category>
+      <view
+            category="com.eilonwy.discord.eclipse.category"
+            class="com.eilonwy.discord.eclipse.ui.DiscordView"
+            id="com.eilonwy.discord.eclipse.views.discord"
+            name="Discord"
+            restorable="true">
+      </view>
+   </extension>
+
+   <extension point="org.eclipse.ui.startup">
+      <startup class="com.eilonwy.discord.eclipse.Startup"/>
+   </extension>
+
+   <extension point="org.eclipse.core.runtime.preferences">
+      <initializer class="com.eilonwy.discord.eclipse.ui.PreferenceInitializer"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.preferencePages">
+      <page
+            class="com.eilonwy.discord.eclipse.ui.PresencePreferencePage"
+            id="com.eilonwy.discord.eclipse.preferences.presence"
+            name="Discord Rich Presence">
+      </page>
+   </extension>
+
+   <extension point="org.eclipse.ui.menus">
+      <menuContribution locationURI="toolbar:org.eclipse.ui.trim.status">
+         <toolbar id="com.eilonwy.discord.eclipse.trim.status">
+            <control
+                  class="com.eilonwy.discord.eclipse.ui.StatusContribution"
+                  id="com.eilonwy.discord.eclipse.trim.status.presence">
+            </control>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>
