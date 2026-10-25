@@ -1,4 +1,4 @@
-# Discord Rich Presence for Eclipse IDE
+# Discord Presence & Chat for Eclipse IDE
 
 Show what you are working on in Eclipse on your Discord profile, and keep Discord itself open in
 an Eclipse view.
@@ -26,38 +26,55 @@ plug-in works with.*
 - A status bar item showing the connection; click it for Reconnect, Enable/Disable, Open Discord
   and Preferences.
 
+## Install
+
+Requirements: Eclipse 2024-12 or newer (or any Eclipse running on Java 21+), and the Discord
+desktop app running on the same machine.
+
+- **Update site:** in Eclipse, **Help → Install New Software… → Add…** and enter
+  `https://eilonwy06.github.io/discord-eclipse-ide/`. Then tick *Discord Presence & Chat for
+  Eclipse IDE* and finish the wizard.
+- **Eclipse Marketplace:** listing coming soon.
+
+After a restart, the status bar shows **Discord: connected** and your profile shows "Playing
+Eclipse IDE". No setup is needed. Open the chat view with **Window → Show View → Other… → Discord →
+Discord**.
+
+Discord needs *User Settings → Activity Privacy → Share your detected activities* switched on.
+
+## Using your own Discord application (optional)
+
+By default the plug-in shows as this project's Discord application, "Eclipse IDE". To show a
+different name after "Playing", or your own art:
+
+1. Open https://discord.com/developers/applications → **New Application**, and name it after what
+   should follow "Playing".
+2. Copy the **Application ID** from *General Information*. It's a public identifier, not a secret.
+3. Under *Rich Presence → Art Assets*, upload an image with the key **`eclipse`**. It becomes the
+   small image. The Eclipse logo ships with every Eclipse install as
+   `plugins/org.eclipse.platform_*/eclipse1024.png`.
+4. In Eclipse: **Window → Preferences → Discord Rich Presence → Application ID**, paste, Apply.
+
 ## Repository layout
 
 ```
-com.eilonwy.discord.eclipse/   the plug-in (PDE project)
-LICENSE                        MIT, upstream copyright retained
+com.eilonwy.discord.eclipse/          the plug-in
+com.eilonwy.discord.eclipse.feature/  the installable feature
+com.eilonwy.discord.eclipse.site/     the p2 update site
+discord-eclipse.target                target platform: Eclipse 2024-12, the oldest supported
+pom.xml                               Tycho build
+.github/workflows/                    CI build, and the manual update-site deploy to GitHub Pages
+LICENSE                               MIT, upstream copyright retained
 ```
 
-## Running it
+## Building from source
 
-1. Import `com.eilonwy.discord.eclipse` into Eclipse as an existing project (it carries its
-   `.project` / `.classpath` / PDE nature).
-2. **Run As → Eclipse Application**.
-3. The status bar shows **Discord: needs setup** until it has an Application ID (below).
-4. **Window → Show View → Other… → Discord → Discord** opens the web client.
+- **Command line:** `mvn verify` with Java 21+ and Maven 3.9. The update site lands in
+  `com.eilonwy.discord.eclipse.site/target/repository`.
+- **In Eclipse:** import the three projects, then run `com.eilonwy.discord.eclipse` with **Run As →
+  Eclipse Application**.
 
-Requirements: Java 21+, an Eclipse with PDE, and the Discord desktop app running on the same
-machine. No Maven/Tycho build is included yet.
-
-## One-time setup: a Discord application
-
-Rich Presence always shows as some Discord *application*, and its name is the "Playing …" text.
-
-1. Open https://discord.com/developers/applications → **New Application**, and name it after what
-   should follow "Playing" (for example `Eclipse IDE`).
-2. Copy the **Application ID** from *General Information*.
-3. In Eclipse: **Window → Preferences → Discord Rich Presence → Application ID**, paste, Apply.
-4. Optional: under *Rich Presence → Art Assets*, upload an image with the key **`eclipse`**. It
-   becomes the small image. The Eclipse logo ships with every Eclipse install as
-   `plugins/org.eclipse.platform_*/eclipse1024.png`.
-
-Discord also needs *User Settings → Activity Privacy → Share your detected activities* switched
-on.
+To publish, run the **Deploy update site** workflow from the GitHub Actions tab.
 
 ## Rich Presence compared with discord-vscode
 

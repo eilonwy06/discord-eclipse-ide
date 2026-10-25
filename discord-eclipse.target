@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="Discord Presence &amp; Chat for Eclipse IDE Target Platform" sequenceNumber="1">
+	<locations>
+		<!-- Built against the oldest release the plug-in supports, not the newest, so it cannot
+		     pick up API that 2024-12 users would not have. 2024-12 (4.34) is the first release
+		     that requires Java 21, the plug-in's own minimum. -->
+		<location includeMode="planner" includeAllPlatforms="false" includeSource="false" includeConfigurePhase="true" type="InstallableUnit">
+			<repository location="https://download.eclipse.org/releases/2024-12"/>
+			<unit id="org.eclipse.platform.ide" version="0.0.0"/>
+			<unit id="com.google.gson" version="0.0.0"/>
+		</location>
+	</locations>
+</target>

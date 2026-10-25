@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.eilonwy.discord.eclipse.feature"
+      label="Discord Presence &amp; Chat for Eclipse IDE"
+      version="1.0.0.qualifier"
+      provider-name="eilonwy06">
+
+   <description url="https://github.com/eilonwy06/discord-eclipse-ide">
+      Show what you are working on in Eclipse on your Discord profile, and keep Discord open in an
+Eclipse view.
+
+- Rich Presence: &quot;Playing Eclipse IDE&quot; with the file you are editing, the project, a
+  language icon, elapsed time, debugging state and an optional View Repository button. Works with
+  no setup; every line of text and image is configurable.
+- Discord view: Discord&apos;s own web client in a workbench view, with an offline page when
+  Discord can&apos;t be reached.
+
+Requires Java 21 and the Discord desktop app. Forked from discord-vscode by Noel Buechler and
+contributors. Not affiliated with or endorsed by Discord or the Eclipse Foundation.
+   </description>
+
+   <copyright url="https://github.com/eilonwy06/discord-eclipse-ide">
+      Copyright (c) 2026 Carlo Louis Felipe (eilonwy06). Based on discord-vscode, Copyright (c) 2017 Noel Buechler and Khinenw. Discord and the Discord logo are trademarks of Discord Inc. Not affiliated with or endorsed by Discord or the Eclipse Foundation.
+   </copyright>
+
+   <license url="https://github.com/eilonwy06/discord-eclipse-ide/blob/main/LICENSE">
+      MIT License
+
+Copyright (c) 2017 Noel Buechler
+Copyright (c) 2017 Khinenw
+Copyright (c) 2026 Carlo Louis Felipe
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+   </license>
+
+   <url>
+      <discovery label="GitHub site" url="https://github.com/eilonwy06/discord-eclipse-ide"/>
+   </url>
+
+   <plugin
+         id="com.eilonwy.discord.eclipse"
+         version="0.0.0"/>
+
+</feature>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="com.eilonwy.discord.eclipse.feature">
+      <category name="com.eilonwy.discord.eclipse.category"/>
+   </feature>
+   <category-def name="com.eilonwy.discord.eclipse.category" label="Discord Presence &amp; Chat for Eclipse IDE">
+      <description>
+         Discord Rich Presence and a Discord view for Eclipse IDE.
+         Not affiliated with or endorsed by Discord or the Eclipse Foundation.
+      </description>
+   </category-def>
+</site>
