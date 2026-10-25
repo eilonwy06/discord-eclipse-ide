@@ -4,7 +4,6 @@ import java.net.URI;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
-import org.eclipse.jface.action.Action;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.browser.Browser;
@@ -99,15 +98,6 @@ public class DiscordView extends ViewPart {
                 return null;
             }
         };
-
-        Action external = new Action("Open in System Browser") {
-            @Override
-            public void run() {
-                String url = browser.getUrl();
-                openExternal(url == null || url.isBlank() || url.startsWith("about:") ? HOME : url);
-            }
-        };
-        getViewSite().getActionBars().getMenuManager().add(external);
 
         load();
     }

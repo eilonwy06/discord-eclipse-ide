@@ -135,8 +135,8 @@ both open, whichever connected first is shown. Set an idle timeout in both
   window and a harmless Shift press is posted, through SWT's internal bindings in pure Java. This
   works around WebView2 intermittently refusing keys inside workbench views.
 - Discord stays in the view. Other top-level navigation and popups open in the system browser.
-  Iframes are left alone, because the sign-in captcha is one. The view has no navigation buttons;
-  *Open in System Browser* is in its view menu.
+  Iframes are left alone, because the sign-in captcha is one. The view has no toolbar or view menu:
+  it is just Discord.
 - Offline: before loading, the view checks that Discord can be reached. If it can't, it shows a
   self-contained "No internet connection" page with a *Try again* button, and retries on its own
   every 10 s until Discord loads. Once Discord is open, its own client handles dropped connections.
