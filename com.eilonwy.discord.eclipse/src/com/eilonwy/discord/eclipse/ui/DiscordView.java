@@ -37,9 +37,10 @@ import org.eclipse.ui.part.ViewPart;
  * back. Once Discord is loaded, dropped connections are Discord's to handle: its client shows its
  * own reconnecting state.
  *
- * <p>It needs Edge (WebView2). Without it there is no fallback, because the Internet Explorer engine
- * cannot run Discord. The sign-in is kept in SWT's WebView2 profile, which every Edge browser in this
- * Eclipse shares, so it is meant to survive a restart.
+ * <p>On Windows it needs Edge (WebView2). Without it there is no fallback, because the Internet
+ * Explorer engine cannot run Discord. The sign-in is kept in SWT's WebView2 profile, which every Edge
+ * browser in this Eclipse shares, so it is meant to survive a restart. On macOS SWT uses WebKit
+ * instead, which runs Discord once {@link WebKitCacheApi} has turned on the Cache API.
  */
 public class DiscordView extends ViewPart {
 
@@ -64,6 +65,7 @@ public class DiscordView extends ViewPart {
     @Override
     public void createPartControl(Composite parent) {
         parent.setLayout(new FillLayout());
+        WebKitCacheApi.enable();
         try {
             browser = new Browser(parent, SWT.EDGE);
         } catch (SWTError e) {
