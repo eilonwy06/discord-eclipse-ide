@@ -4,6 +4,7 @@ import java.net.URI;
 import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 
+import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.SWTError;
 import org.eclipse.swt.browser.Browser;
@@ -23,6 +24,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
+
+import com.eilonwy.discord.eclipse.Activator;
 
 /**
  * Discord's own web client in a workbench view.
@@ -56,6 +59,11 @@ public class DiscordView extends ViewPart {
     private BrowserFunction retryFunction;
     private boolean offline;
     private boolean checking;
+    private final IPropertyChangeListener zoomListener = e -> {
+        if (WebViewZoom.PREF.equals(e.getProperty()) && browser != null && !browser.isDisposed()) {
+            browser.getDisplay().asyncExec(this::applyZoom);
+        }
+    };
     private final Runnable retry = () -> {
         if (offline) {
             load();
@@ -90,8 +98,11 @@ public class DiscordView extends ViewPart {
                 for (int ms : new int[] { 50, 200, 500, 1000, 1500 }) {
                     d.timerExec(ms, () -> WebViewInput.activate(browser));
                 }
+                applyZoom();
             }
         });
+        Activator.getDefault().getPreferenceStore().addPropertyChangeListener(zoomListener);
+        applyZoom();
         retryFunction = new BrowserFunction(browser, "discordRetry") {
             @Override
             public Object function(Object[] arguments) {
@@ -102,6 +113,23 @@ public class DiscordView extends ViewPart {
         };
 
         load();
+    }
+
+    /**
+     * Sets the zoom from the preferences, retrying briefly while the WebView2 controller is still
+     * being created. Once set, it holds across navigations and the user can't change it.
+     */
+    private void applyZoom() {
+        if (browser == null || browser.isDisposed()) {
+            return;
+        }
+        int percent = Activator.getDefault().getPreferenceStore().getInt(WebViewZoom.PREF);
+        if (!WebViewZoom.apply(browser, percent)) {
+            Display d = browser.getDisplay();
+            for (int ms : new int[] { 100, 500, 1500 }) {
+                d.timerExec(ms, () -> WebViewZoom.apply(browser, percent));
+            }
+        }
     }
 
     /** Loads Discord if it can be reached, otherwise shows the offline page and retries. */
@@ -242,6 +270,7 @@ public class DiscordView extends ViewPart {
 
     @Override
     public void dispose() {
+        Activator.getDefault().getPreferenceStore().removePropertyChangeListener(zoomListener);
         if (browser != null && !browser.isDisposed()) {
             browser.getDisplay().timerExec(-1, retry);
         }

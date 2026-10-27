@@ -326,7 +326,7 @@ public final class PresenceService {
             case CONNECTED -> "Connected to Discord" + (s.user() == null ? "" : " as " + s.user())
                     + (s.message() == null ? "" : ": " + s.message());
             case DISCONNECTED -> "Not connected to Discord" + (s.message() == null ? "" : ": " + s.message());
-            case NO_APPLICATION_ID -> "Discord Rich Presence needs an Application ID (Preferences > Discord Rich Presence)";
+            case NO_APPLICATION_ID -> "Discord Rich Presence needs an Application ID (Preferences > Discord)";
             default -> "Discord Rich Presence is disabled";
         };
         if (line.equals(lastLoggedStatus)) {

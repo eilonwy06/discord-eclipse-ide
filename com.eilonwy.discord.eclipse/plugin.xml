@@ -50,7 +50,7 @@
       <page
             class="com.eilonwy.discord.eclipse.ui.PresencePreferencePage"
             id="com.eilonwy.discord.eclipse.preferences.presence"
-            name="Discord Rich Presence">
+            name="Discord">
       </page>
    </extension>
 

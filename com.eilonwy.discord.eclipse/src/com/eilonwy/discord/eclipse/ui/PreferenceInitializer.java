@@ -10,5 +10,6 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
     @Override
     public void initializeDefaultPreferences() {
         PresencePreferences.setDefaults(Activator.getDefault().getPreferenceStore());
+        Activator.getDefault().getPreferenceStore().setDefault(WebViewZoom.PREF, WebViewZoom.DEFAULT);
     }
 }

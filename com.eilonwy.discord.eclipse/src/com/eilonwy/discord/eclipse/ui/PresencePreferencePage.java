@@ -18,7 +18,7 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
 import com.eilonwy.discord.eclipse.Activator;
 import com.eilonwy.discord.eclipse.PresencePreferences;
 
-/** Window &gt; Preferences &gt; Discord Rich Presence. */
+/** Window &gt; Preferences &gt; Discord: Rich Presence, and the Discord view. */
 public class PresencePreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
 
     public static final String ID = "com.eilonwy.discord.eclipse.preferences.presence";
@@ -27,8 +27,9 @@ public class PresencePreferencePage extends FieldEditorPreferencePage implements
 
     public PresencePreferencePage() {
         super(GRID);
-        setDescription("Shows what you are working on in Eclipse on your Discord profile. "
-                + "Needs the Discord desktop app running on this machine.");
+        setDescription("Rich Presence shows what you are working on in Eclipse on your Discord profile; "
+                + "it needs the Discord desktop app running on this machine. The Discord view settings are "
+                + "at the bottom.");
     }
 
     @Override
@@ -91,6 +92,21 @@ public class PresencePreferencePage extends FieldEditorPreferencePage implements
         GridData imagesData = span(p);
         imagesData.widthHint = 420;
         images.setLayoutData(imagesData);
+
+        heading(p, "Discord view");
+        subheading(p, "Zoom");
+        IntegerFieldEditor zoom = new IntegerFieldEditor(WebViewZoom.PREF, "Zoom level (%):", p, 3);
+        zoom.setValidRange(WebViewZoom.MIN, WebViewZoom.MAX);
+        zoom.setErrorMessage("Zoom must be a whole number from " + WebViewZoom.MIN + " to " + WebViewZoom.MAX
+                + "%, the range the Discord view's browser can display.");
+        addField(zoom);
+        Label zoomNote = new Label(p, SWT.WRAP);
+        zoomNote.setText("From " + WebViewZoom.MIN + "% to " + WebViewZoom.MAX + "%; the default is "
+                + WebViewZoom.DEFAULT + "%. Applies at once to open Discord views. Ctrl+scroll and Ctrl+plus/minus "
+                + "don't zoom the Discord view, so this setting is the only way to change it.");
+        GridData zoomData = span(p);
+        zoomData.widthHint = 420;
+        zoomNote.setLayoutData(zoomData);
     }
 
     private static void heading(Composite parent, String text) {
@@ -99,6 +115,14 @@ public class PresencePreferencePage extends FieldEditorPreferencePage implements
         Label l = new Label(parent, SWT.NONE);
         l.setText(text);
         l.setFont(org.eclipse.jface.resource.JFaceResources.getBannerFont());
+        l.setLayoutData(span(parent));
+    }
+
+    private static void subheading(Composite parent, String text) {
+        Label l = new Label(parent, SWT.NONE);
+        l.setText(text);
+        l.setFont(org.eclipse.jface.resource.JFaceResources.getFontRegistry()
+                .getBold(org.eclipse.jface.resource.JFaceResources.DEFAULT_FONT));
         l.setLayoutData(span(parent));
     }
 

@@ -124,7 +124,7 @@ public class StatusContribution extends WorkbenchWindowControlContribution {
             }
             case NO_APPLICATION_ID -> {
                 text = "Discord: needs setup";
-                tip = "Set a Discord Application ID in Preferences > Discord Rich Presence.";
+                tip = "Set a Discord Application ID in Preferences > Discord.";
                 dot = Dot.GREY;
             }
             case CONNECTING -> {

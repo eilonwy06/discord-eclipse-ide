@@ -57,7 +57,7 @@ different name after "Playing", or your own art:
 3. Under *Rich Presence → Art Assets*, upload an image with the key **`eclipse`**. It becomes the
    small image. The Eclipse logo ships with every Eclipse install as
    `plugins/org.eclipse.platform_*/eclipse1024.png`.
-4. In Eclipse: **Window → Preferences → Discord Rich Presence → Application ID**, paste, Apply.
+4. In Eclipse: **Window → Preferences → Discord → Application ID**, paste, Apply.
 
 ## Repository layout
 
@@ -144,6 +144,10 @@ both open, whichever connected first is shown. Set an idle timeout in both
 - Offline: before loading, the view checks that Discord can be reached. If it can't, it shows a
   self-contained "No internet connection" page with a *Try again* button, and retries on its own
   every 10 s until Discord loads. Once Discord is open, its own client handles dropped connections.
+- Zoom: set under **Window → Preferences → Discord → Discord view → Zoom**, from 25% to 500%,
+  which is the range WebView2 (Chromium) can display. The default is 100%. Ctrl+scroll and
+  Ctrl+plus/minus don't zoom the view, so it stays where you set it. This applies to WebView2 on
+  Windows; elsewhere the engine's own zoom is left as it is.
 - Nothing is injected into Discord's page and the account is never automated. Discord's terms
   forbid automating a user account.
 - There is no Internet Explorer fallback; without WebView2 the view says so instead.
