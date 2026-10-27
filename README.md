@@ -23,6 +23,10 @@ plug-in works with.*
   "Debugging …" while a debug launch runs, and an optional *View Repository* button.
 - **A Discord view.** Discord's own web client in a workbench view, so you can read and answer
   messages without leaving the IDE.
+- **A Discord perspective.** *Window → Perspective → Open Perspective → Discord* puts Discord
+  beside the editor, with the Project Explorer on the left and Problems and Console below the
+  editor. Every other perspective lists it in its Open Perspective shortcuts, and lists the
+  Discord view in its Show View shortcuts.
 - A status bar item showing the connection; click it for Reconnect, Enable/Disable, Open Discord
   and Preferences.
 

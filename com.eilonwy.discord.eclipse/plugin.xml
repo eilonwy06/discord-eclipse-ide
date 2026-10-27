@@ -17,6 +17,27 @@
       </view>
    </extension>
 
+   <extension point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.eilonwy.discord.eclipse.ui.DiscordPerspective"
+            icon="icons/discord16.png"
+            id="com.eilonwy.discord.eclipse.perspective"
+            name="Discord">
+         <description>
+            Discord beside the editor, for chatting while you code.
+         </description>
+      </perspective>
+   </extension>
+
+   <!-- Offer the Discord view and perspective from every other perspective's
+        Show View and Open Perspective shortcut lists. -->
+   <extension point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension targetID="*">
+         <viewShortcut id="com.eilonwy.discord.eclipse.views.discord"/>
+         <perspectiveShortcut id="com.eilonwy.discord.eclipse.perspective"/>
+      </perspectiveExtension>
+   </extension>
+
    <extension point="org.eclipse.ui.startup">
       <startup class="com.eilonwy.discord.eclipse.Startup"/>
    </extension>
